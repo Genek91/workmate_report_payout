@@ -1,6 +1,6 @@
 def read_employees(file_path: str) -> list[dict]:
-    with open(file_path, "r", encoding="utf-8") as f:
-        lines = f.read().splitlines()
+    with open(file_path, "r", encoding="utf-8") as file:
+        lines = file.read().splitlines()
 
     if not lines:
         return []
@@ -14,8 +14,8 @@ def read_employees(file_path: str) -> list[dict]:
         idx_name = header.index("name")
         idx_department = header.index("department")
         idx_hours = header.index("hours_worked")
-    except ValueError as e:
-        raise ValueError(f"Отсутствует требуемый столбец: {e}")
+    except ValueError as error:
+        raise ValueError(f"Отсутствует требуемый столбец: {error}")
 
     rate_col_names = ["hourly_rate", "rate", "salary"]
     idx_rate = None
